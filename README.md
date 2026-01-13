@@ -1,57 +1,102 @@
-Customer Segmentation and Churn Prediction with PySpark
-==============================
+# Customer Segmentation and Churn Prediction with PySpark
 
-A short description of the project.
+## 📌 Présentation du projet
+Ce projet de **Big Data Analytics** vise à exploiter **PySpark** pour analyser des données transactionnelles à grande échelle afin de :
 
-Project Organization
-------------
+- **Segmenter les clients** selon leur comportement d’achat à l’aide de l’approche **RFM** (Récence, Fréquence, Montant).
+- **Prédire le churn client** (risque de désengagement) à l’aide de modèles de **Machine Learning supervisés**.
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+L’objectif est de fournir une aide à la décision permettant aux entreprises d’optimiser leurs stratégies de **fidélisation**, de **marketing ciblé** et de **gestion de la relation client**.
+
+---
+
+## 🗂️ Jeu de données utilisé
+- **Nom** : Online Retail Dataset  
+- **Source** : UCI Machine Learning Repository / Kaggle  
+- **Période** : Décembre 2010 – Décembre 2011  
+- **Taille** : 541 909 transactions, 8 variables  
+
+### Variables principales
+- `InvoiceNo` : Identifiant de la facture  
+- `StockCode` : Code produit  
+- `Description` : Description du produit  
+- `Quantity` : Quantité achetée  
+- `InvoiceDate` : Date et heure de la transaction  
+- `UnitPrice` : Prix unitaire  
+- `CustomerID` : Identifiant unique du client  
+- `Country` : Pays du client  
+
+---
+
+## 🔧 Étapes principales du projet
+
+### 1️⃣ Prétraitement des données
+- Imputation des valeurs manquantes, enrichissement temporel
+
+### 2️⃣ Feature Engineering – Métriques RFM
+- **Recency** : Temps écoulé depuis le dernier achat
+- **Frequency** : Nombre de transactions distinctes
+- **Monetary** : Montant total dépensé
 
 
---------
+---
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+### 3️⃣ Segmentation client avec K-Means
+- Normalisation des variables RFM
+- Sélection du nombre optimal de clusters :
+- Méthode du **coude (WCSS)**
+- **Score de silhouette**
+
+
+---
+
+### 4️⃣ Prédiction du churn client
+- Variables explicatives :
+- Métriques RFM
+- Cluster K-Means
+- Modèles testés :
+- Régression Logistique
+- Random Forest
+- Gradient Boosting Machine (GBM)
+
+#### Métriques d’évaluation
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- AUC (ROC)
+
+
+---
+
+
+## 🛠️ Technologies utilisées
+- **PySpark** : Traitement distribué des données
+- **Python** : Développement et orchestration
+- **Spark MLlib** : Clustering et classification
+- **Pandas / NumPy / Matplotlib / Seaborn** : Analyse et visualisation
+- **UCI / Kaggle** : Source de données
+
+---
+
+## 🚀 Instructions pour exécuter le projet
+
+
+## Cloner le dépôt
+```bash
+git clone https://github.com/HamzaOuazzaniChahdi/Customer-Segmentation-and-Churn-Prediction-with-PySpark.git
+cd Customer-Segmentation-and-Churn-Prediction-with-PySpark
+```
+```bash
+# Créer un environnement virtuel
+python -m venv venv
+# Activation
+venv\Scripts\activate      #Windows
+source venv/bin/activate   # Linux/mac
+```
+
+```bash
+# Installer les dépendances
+pip install -r requirements.txt
+# Lancer le projet
+python src/main.py

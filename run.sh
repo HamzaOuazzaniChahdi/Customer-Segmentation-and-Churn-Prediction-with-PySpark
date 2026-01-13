@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "🔍 Vérification de Python..."
-python3 --version || { echo "Python non installé"; exit 1; }
-
-
 echo "📦 Création de l'environnement virtuel..."
 python3 -m venv OUAZZANI.C_HAMZA
 
